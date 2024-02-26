@@ -1,10 +1,22 @@
 const expression = document.querySelector(".expression");
 const expressionDisplay = document.querySelector(".expressionDisplay");
 const buttons = document.querySelectorAll(".gridButtons button");
+const buttonHistory = document.querySelector(".buttonHistory");
+const modalHistory = document.querySelector(".modalHistory");
+const buttonCloseModal = document.querySelector(".buttonCloseModal");
+
+
+buttonHistory.addEventListener("click", () => {
+  modalHistory.showModal();
+})
+
+buttonCloseModal.addEventListener("click", () => {
+  modalHistory.close();
+})
 
 function clearScreen() {
-    expression.innerHTML = "";
-    expressionDisplay.innerHTML = "";
+  expression.innerHTML = "";
+  expressionDisplay.innerHTML = "";
 }
 
 const totalNumbers = 13;
@@ -13,8 +25,8 @@ let isError = false;
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     if (isError) {
-        clearScreen();
-        isError = false;
+      clearScreen();
+      isError = false;
     }
 
     switch (button.innerHTML) {
@@ -26,17 +38,19 @@ buttons.forEach((button) => {
         expression.innerHTML = expression.innerHTML.slice(0, -1);
         break;
 
-        case "=":
-            try {
-                if (expression.innerHTML.length > 0) {
-                    expressionDisplay.innerHTML = expression.innerHTML;
-                    expression.innerHTML = String(eval(expression.innerHTML.replace("X", "*").replace("%", "/100"))).slice(0, 13);  
-                }
-            } catch (error) {
-                console.log(error);
-                expression.innerHTML = "Error"
-                isError = true;
-            }
+      case "=":
+        try {
+          if (expression.innerHTML.length > 0) {
+            expressionDisplay.innerHTML = expression.innerHTML;
+            expression.innerHTML = String(
+              eval(expression.innerHTML.replace("X", "*").replace("%", "/100"))
+            ).slice(0, 13);
+          }
+        } catch (error) {
+          console.log(error);
+          expression.innerHTML = "Error";
+          isError = true;
+        }
         break;
 
       default:

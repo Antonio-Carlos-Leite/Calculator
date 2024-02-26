@@ -37,10 +37,105 @@ body {
   box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.2);
 }
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+}
+
 header h1 {
   margin-top: 1.6rem;
   font-size: clamp(1.4rem, 3vw, 2.4rem);
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.buttonHistory {
+  background: none;
+  border: transparent;
+  transition: 200ms;
+}
+
+.buttonHistory:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.buttonHistory img {
+  width: 2rem;
+}
+
+.modalHistory {
+  background: var(--screen-color);
+  border-radius: 8px;
+  border: none;
+  width: 24rem;
+  height: 42rem;
+  padding: 1.6rem 0.8rem 0rem;
+  margin: 35% auto;
+  box-shadow: inset 0 0 12px 1px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.modalHistory::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.buttonCloseModal {
+  position: absolute;
+  top: 1.6rem;
+  left: 1.6rem;
+  border: transparent;
+  color: var(--button-text-color);
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  background: none;
+}
+
+.buttonCloseModal:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.containerHistory {
+  overflow: auto;
+  height: 85%;
+  padding: 2rem 1.2rem;
+}
+
+.boxHistory {
+  text-align: right;
+}
+
+.boxHistory + .boxHistory {
+  margin-top: 2rem;
+}
+
+.expressionHistory {
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  color: var(--button-number-color);
+}
+
+.resultHistory {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: var(--button-text-color);
+  margin-top: 0.8rem;
+}
+
+.buttonClearHistory {
+  border: transparent;
+  background: #66666622;
+  color: var(--button-text-color);
+  font-size: 1rem;
+  width: 12rem;
+  margin: 1.2rem auto;
+  border-radius: 8px;
+  padding: 0.8rem;
+}
+
+.buttonClearHistory:hover {
+  cursor: pointer;
+  background: #66666633;
 }
 
 .screen {
@@ -139,45 +234,44 @@ footer a:hover {
   }
 }
 
-
 @media (min-width: 768px) {
-    .calculator {
-        padding: 4.2rem;
-    }
+  .calculator {
+    padding: 4.2rem;
+  }
 
-    main {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 3.2rem;
-    }
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.2rem;
+  }
 
-    .screen {
-        width: 60vw;
-        height: 27rem;
-    }
+  .screen {
+    width: 60vw;
+    height: 27rem;
+  }
 
-    .expression {
-        bottom: 2.4rem;
-        right: 4.2rem;
-    }
-    
-    .expression::after {
-        bottom: -0.25rem;
-        right: -1.5rem;
-    }
+  .expression {
+    bottom: 2.4rem;
+    right: 4.2rem;
+  }
 
-    .expressionDisplay {
-        bottom: 7.2rem;
-        right: 4.2rem;
-    }
+  .expression::after {
+    bottom: -0.25rem;
+    right: -1.5rem;
+  }
 
-    .gridButtons {
-        grid-template-rows: repeat(5, 4.75rem);
-        margin-top: 3.2rem;
-    }
+  .expressionDisplay {
+    bottom: 7.2rem;
+    right: 4.2rem;
+  }
 
-    footer {
-        margin-top: 4.2rem;
-    }
+  .gridButtons {
+    grid-template-rows: repeat(5, 4.75rem);
+    margin-top: 3.2rem;
+  }
+
+  footer {
+    margin-top: 4.2rem;
+  }
 }

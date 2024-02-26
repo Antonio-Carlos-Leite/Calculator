@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="icon" href="./images/calculate_FILL0_wght400_GRAD0_opsz24.svg" />
     <script src="./scripts/scripts.js" defer></script>
     <title>Calculadora Reprograma jucás</title>
   </head>
@@ -24,7 +25,24 @@
       <div class="calculator">
         <header>
           <h1>Calculadora</h1>
+          <button class="buttonHistory">
+            <img src="./images/history_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+          </button>
         </header>
+        <aside>
+          <dialog class="modalHistory">
+            <button class="buttonCloseModal">X</button>
+
+            <div class="containerHistory">
+              <div class="boxHistory">
+                <div class="expressionHistory">25*5</div>
+                <div class="resultHistory">125</div>
+              </div>
+            </div>
+
+            <button class="buttonClearHistory">Limpar</button>
+          </dialog>
+        </aside>
         <main>
           <div class="screen">
             <div class="expression"></div>
