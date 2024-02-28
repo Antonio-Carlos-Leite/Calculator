@@ -16,6 +16,20 @@ buttonCloseModal.addEventListener("click", () => {
   modalHistory.close();
 });
 
+buttonClearHistory.addEventListener("click", () => {
+  const calculatorHistory = JSON.parse(
+    localStorage.getItem("@calculator:history")
+  );
+  if (calculatorHistory) {
+    const responseToClear = confirm("Deseja Limpar Historico?");
+
+    if (responseToClear) {
+      localStorage.removeItem("@calculator:history");
+      updateHistory();
+    }
+  }
+});
+
 function clearScreen() {
   expression.innerHTML = "";
   expressionDisplay.innerHTML = "";
@@ -28,7 +42,7 @@ function updateHistory() {
 
   containerHistory.innerHTML = "";
   if (calculatorHistory) {
-    calculatorHistory.forEach((value) => {
+    calculatorHistory.reverse().forEach((value) => {
       containerHistory.innerHTML += `
         <div class="boxHistory">
           <div class="expressionHistory">${value.expression}</div>
@@ -71,14 +85,14 @@ buttons.forEach((button) => {
           }
 
           const calculatorHistory = JSON.parse(
-            localStorage.getItem("@calculator:History")
+            localStorage.getItem("@calculator:history")
           );
 
           if (calculatorHistory) {
             localStorage.setItem(
               "@calculator:history",
               JSON.stringify([
-                ...calculatorHistory,
+                ...calculatorHistory.slice(-20), // limit history
                 {
                   result: expression.innerHTML,
                   expression: expressionDisplay.innerHTML,
