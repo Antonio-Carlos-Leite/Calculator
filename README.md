@@ -12,4 +12,4 @@ Este projeto foi desenvolvido na conclusão do módulo de JavaScript do curso de
 
 ## Links
 
-- [Deploy](https://github.com/Antonio-Carlos-Leite/Calculator/)
+- [Deploy](https://antonio-carlos-leite.github.io/Calculator/)
